@@ -57,6 +57,7 @@ const FormAddPlayers = ({ setPlayers, players }: iFormAddPlayer) => {
           className="w-full max-w-[180px] bg-slate-500 text-center"
           type="text"
           id="nome"
+          placeholder="Jogador1"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
@@ -70,12 +71,24 @@ const FormAddPlayers = ({ setPlayers, players }: iFormAddPlayer) => {
           onChange={handleColorChange}
           className={`w-[250px] max-w-[180px] ${selectedColor}`}
         >
-          <option className="bg-black" value="bg-black"></option>
-          <option className="bg-red-700" value="bg-red-700"></option>
-          <option className="bg-blue-700" value="bg-blue-700"></option>
-          <option className="bg-green-700" value="bg-green-700"></option>
-          <option className="bg-yellow-400" value="bg-yellow-300"></option>
-          <option className="bg-pink-500" value="bg-pink-500"></option>
+          <option className="bg-black" value="bg-black">
+            Preto
+          </option>
+          <option className="bg-red-700" value="bg-red-700">
+            Vermelho
+          </option>
+          <option className="bg-blue-700" value="bg-blue-700">
+            Azul
+          </option>
+          <option className="bg-green-700" value="bg-green-700">
+            Verde
+          </option>
+          <option className="bg-yellow-400" value="bg-yellow-300">
+            Amarelo
+          </option>
+          <option className="bg-pink-500" value="bg-pink-500">
+            Rosa
+          </option>
         </select>
       </div>
       <div className="flex w-[250px] justify-between">

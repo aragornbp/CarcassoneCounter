@@ -51,7 +51,9 @@ const FormAddPoints = ({ setPlayers, players }: iFormAddPoints) => {
           id="type"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
+          placeholder="selecione"
         >
+          <option value="">Selecione</option>
           {players.length > 0 ? (
             players.map((player, index) => (
               <option key={index} value={player.nome}>
@@ -72,6 +74,7 @@ const FormAddPoints = ({ setPlayers, players }: iFormAddPoints) => {
           value={tipo}
           onChange={(e) => setTipo(e.target.value)}
         >
+          <option value="">Selecione</option>
           <option value="rua">Rua</option>
           <option value="cidade">Cidade</option>
           <option value="padre">Padre</option>
