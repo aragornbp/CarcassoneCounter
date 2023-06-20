@@ -9,7 +9,7 @@ interface iFormAddPoints {
 const FormAddPoints = ({ setPlayers, players }: iFormAddPoints) => {
   const [nome, setNome] = useState('')
   const [tipo, setTipo] = useState('')
-  const [valor, setValor] = useState('')
+  const [valor, setValor] = useState('0')
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

@@ -1,13 +1,30 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FormAddPlayers, {
   iPlayer,
 } from '@/components/FormAddPlayers/FormAddPlayers'
 import FormAddPoints from '@/components/FormAddPoints/FormAddPoints'
 import TableRow from '@/components/TableRow/TableRow'
+import Cookies from 'js-cookie'
 
 export default function Home() {
   const [players, setPlayers] = useState<iPlayer[]>([])
+
+  useEffect(() => {
+    const cookies = Cookies.get('carcassone_players')
+    if (cookies) {
+      setPlayers(JSON.parse(cookies))
+    }
+  }, [])
+
+  useEffect(() => {
+    Cookies.set('carcassone_players', JSON.stringify(players))
+  }, [players])
+
+  const removeCookies = () => {
+    Cookies.remove('carcassone_players', { path: '' })
+    setPlayers([])
+  }
   return (
     <div className="h-screen bg-slate-800 text-slate-200">
       <main className="flex flex-col justify-center gap-2 p-5">
@@ -27,7 +44,7 @@ export default function Home() {
           </div>
         </div>
         <h2 className="p-2">Game</h2>
-        <section className="w-full max-w-full overflow-x-auto rounded-lg border border-cyan-300">
+        <section className=" w-full max-w-full overflow-x-auto rounded-lg border border-cyan-300">
           <table className="w-full divide-y divide-slate-600 bg-slate-700">
             <thead className="whitespace-nowrap border-b border-slate-400">
               <td className="border border-slate-600 p-3 text-center">Nome</td>
@@ -53,6 +70,14 @@ export default function Home() {
             </tbody>
           </table>
         </section>
+        <div className="flex w-full justify-center p-2">
+          <button
+            className="rounded border bg-slate-600 p-1 "
+            onClick={removeCookies}
+          >
+            Limpar
+          </button>
+        </div>
       </main>
     </div>
   )
