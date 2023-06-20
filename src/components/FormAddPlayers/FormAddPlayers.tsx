@@ -6,7 +6,7 @@ export interface iPlayer {
   cor: string
   rua: number
   cidade: number
-  padre: number
+  igreja: number
   fazenda: number
   fada: number
   total: number
@@ -34,7 +34,7 @@ const FormAddPlayers = ({ setPlayers, players }: iFormAddPlayer) => {
       cor: selectedColor,
       rua: 0,
       cidade: 0,
-      padre: 0,
+      igreja: 0,
       fazenda: 0,
       fada: 0,
       total: 0,

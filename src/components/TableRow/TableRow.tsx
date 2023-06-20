@@ -14,7 +14,7 @@ const TableRow = ({ player }: iTableRow) => {
         {player.cidade}
       </td>
       <td className="border border-slate-600 p-3 text-center">
-        {player.padre}
+        {player.igreja}
       </td>
       <td className="border border-slate-600 p-3 text-center">
         {player.fazenda}

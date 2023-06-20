@@ -31,7 +31,11 @@ const FormAddPoints = ({ setPlayers, players }: iFormAddPoints) => {
   const somarTotal = (list: iPlayer[]) => {
     return list.map((player: iPlayer) => {
       const newTotal =
-        player.rua + player.cidade + player.padre + player.fada + player.fazenda
+        player.rua +
+        player.cidade +
+        player.igreja +
+        player.fada +
+        player.fazenda
       return {
         ...player,
         total: newTotal,
@@ -77,7 +81,7 @@ const FormAddPoints = ({ setPlayers, players }: iFormAddPoints) => {
           <option value="">Selecione</option>
           <option value="rua">Rua</option>
           <option value="cidade">Cidade</option>
-          <option value="padre">Padre</option>
+          <option value="igreja">Igreja</option>
           <option value="fazenda">Fazenda</option>
           <option value="fada">Fada</option>
         </select>
