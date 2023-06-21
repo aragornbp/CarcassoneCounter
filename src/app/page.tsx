@@ -35,7 +35,7 @@ export default function Home() {
         fill
         style={{ objectFit: 'cover' }}
       />
-      <main className="relative z-10 flex flex-col gap-2 p-5 md:m-auto md:max-w-[900px] max-h-full overflow-y-auto">
+      <main className="relative z-10 flex max-h-full flex-col gap-2 overflow-y-auto p-5 md:m-auto md:max-w-[900px]">
         <h1 className="text-center text-2xl font-bold text-black md:text-4xl">
           Carcassone Counter
         </h1>
