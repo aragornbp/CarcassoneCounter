@@ -14,6 +14,9 @@ const FormAddPoints = ({ setPlayers, players }: iFormAddPoints) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    if (valor === ''){
+      return
+    }
     const playersListUpdated = players.map((player) => {
       if (player.nome === nome) {
         const novoValor = player[tipo] + parseInt(valor)

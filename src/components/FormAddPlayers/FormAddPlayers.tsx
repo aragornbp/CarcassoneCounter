@@ -39,7 +39,6 @@ const FormAddPlayers = ({ setPlayers, players }: iFormAddPlayer) => {
       fada: 0,
       total: 0,
     }
-    console.log(objPlayer)
 
     setPlayers([...players, objPlayer])
     setNome('')
