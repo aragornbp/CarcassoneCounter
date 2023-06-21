@@ -14,7 +14,7 @@ const FormAddPoints = ({ setPlayers, players }: iFormAddPoints) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (valor === ''){
+    if (valor === '') {
       return
     }
     const playersListUpdated = players.map((player) => {
