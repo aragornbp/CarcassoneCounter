@@ -8,7 +8,7 @@ interface iTableBase {
 
 const TableBase = ({ players }: iTableBase) => {
   return (
-    <div className="h-fit overflow-x-scroll">
+    <div className="h-fit overflow-x-scroll md:overflow-x-hidden">
       <table className="w-full divide-y divide-slate-600 bg-slate-700">
         <thead className="whitespace-nowrap border-b border-slate-400">
           <td className="border border-slate-600 p-3 text-center">Nome</td>
