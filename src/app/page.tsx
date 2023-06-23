@@ -5,9 +5,9 @@ import FormAddPlayers, {
   iPlayer,
 } from '@/components/FormAddPlayers/FormAddPlayers'
 import FormAddPoints from '@/components/FormAddPoints/FormAddPoints'
-import TableRow from '@/components/TableRow/TableRow'
 import Cookies from 'js-cookie'
 import Image from 'next/image'
+import TableBase from '@/components/TableBase/TableBase'
 
 export default function Home() {
   const [players, setPlayers] = useState<iPlayer[]>([])
@@ -35,7 +35,7 @@ export default function Home() {
         fill
         style={{ objectFit: 'cover' }}
       />
-      <main className="relative z-10 flex max-h-full flex-col gap-2 overflow-y-auto p-5 md:m-auto md:max-w-[900px]">
+      <main className="relative z-10 flex h-screen flex-col gap-2 overflow-y-scroll p-5 md:m-auto">
         <h1 className="text-center text-2xl font-bold text-black md:text-4xl">
           Carcassone Counter
         </h1>
@@ -54,34 +54,7 @@ export default function Home() {
           </div>
         </div>
         <h2 className="p-2 font-bold text-black">Game</h2>
-        <section className=" w-full max-w-full overflow-x-auto rounded-lg border border-cyan-300">
-          <table className="w-full divide-y divide-slate-600 bg-slate-700">
-            <thead className="whitespace-nowrap border-b border-slate-400">
-              <td className="border border-slate-600 p-3 text-center">Nome</td>
-              <td className="border border-slate-600 p-3 text-center">Rua</td>
-              <td className="border border-slate-600 p-3 text-center">
-                Cidade
-              </td>
-              <td className="border border-slate-600 p-3 text-center">
-                Igreja
-              </td>
-              <td className="border border-slate-600 p-3 text-center">
-                Fazenda
-              </td>
-              <td className="border border-slate-600 p-3 text-center">Fada</td>
-              <td className="border border-slate-600 p-3 text-center">Total</td>
-            </thead>
-            <tbody className="whitespace-nowrap">
-              {players?.length > 0 ? (
-                players.map((player, index) => (
-                  <TableRow key={index} player={player} />
-                ))
-              ) : (
-                <h2>Nenhum jogador adicionado</h2>
-              )}
-            </tbody>
-          </table>
-        </section>
+        <TableBase players={players} />
         <div className="flex w-full justify-center p-2">
           <button
             className="rounded border bg-slate-600 p-1 "
