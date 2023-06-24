@@ -45,61 +45,64 @@ const FormAddPlayers = ({ setPlayers, players }: iFormAddPlayer) => {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      action=""
-      className="flex h-full flex-col justify-between gap-2 p-4"
-    >
-      <div className="flex w-[250px] justify-between gap-2 ">
-        <label htmlFor="nome">Nome: </label>
-        <input
-          className="w-full max-w-[180px] bg-slate-500 text-center"
-          type="text"
-          id="nome"
-          placeholder="Jogador1"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
-      </div>
-      <div className="flex w-[250px] justify-between gap-2">
-        <label htmlFor="Cor">Cor: </label>
-        <select
-          name="color"
-          id="color"
-          value={selectedColor}
-          onChange={handleColorChange}
-          className={`w-[250px] max-w-[180px] ${selectedColor}`}
-        >
-          <option className="bg-black" value="bg-black">
-            Preto
-          </option>
-          <option className="bg-red-700" value="bg-red-700">
-            Vermelho
-          </option>
-          <option className="bg-blue-700" value="bg-blue-700">
-            Azul
-          </option>
-          <option className="bg-green-700" value="bg-green-700">
-            Verde
-          </option>
-          <option className="bg-yellow-400" value="bg-yellow-300">
-            Amarelo
-          </option>
-          <option className="bg-pink-500" value="bg-pink-500">
-            Rosa
-          </option>
-        </select>
-      </div>
-      <div className="flex w-[250px] justify-between">
-        <button
-          type="submit"
-          className="w-full rounded-md border bg-slate-500 p-1"
-        >
-          {' '}
-          Add
-        </button>
-      </div>
-    </form>
+    <div className="m-auto w-full max-w-[350px] lg:m-0 lg:max-w-[25%]">
+      <form
+        onSubmit={handleSubmit}
+        action=""
+        className="flex h-44 w-full flex-col justify-between gap-2 rounded-lg bg-slate-700 p-2"
+      >
+        <h2 className="font-bold">Adicione Jogadores</h2>
+        <div className="flex w-full justify-between gap-2 ">
+          <label htmlFor="nome">Nome: </label>
+          <input
+            className="w-full max-w-[180px] bg-slate-500 text-center"
+            type="text"
+            id="nome"
+            placeholder="Jogador1"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </div>
+        <div className="flex w-full justify-between gap-2">
+          <label htmlFor="Cor">Cor: </label>
+          <select
+            name="color"
+            id="color"
+            value={selectedColor}
+            onChange={handleColorChange}
+            className={`w-full max-w-[180px] ${selectedColor}`}
+          >
+            <option className="bg-black" value="bg-black">
+              Preto
+            </option>
+            <option className="bg-red-700" value="bg-red-700">
+              Vermelho
+            </option>
+            <option className="bg-blue-700" value="bg-blue-700">
+              Azul
+            </option>
+            <option className="bg-green-700" value="bg-green-700">
+              Verde
+            </option>
+            <option className="bg-yellow-400" value="bg-yellow-300">
+              Amarelo
+            </option>
+            <option className="bg-pink-500" value="bg-pink-500">
+              Rosa
+            </option>
+          </select>
+        </div>
+        <div className="flex w-full justify-between">
+          <button
+            type="submit"
+            className="w-full rounded-md border bg-slate-500 p-1"
+          >
+            {' '}
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
   )
 }
 
