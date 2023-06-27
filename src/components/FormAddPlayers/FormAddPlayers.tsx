@@ -16,9 +16,14 @@ export interface iPlayer {
 interface iFormAddPlayer {
   setPlayers: React.Dispatch<React.SetStateAction<iPlayer[]>>
   players: iPlayer[]
+  setMemorian: React.Dispatch<React.SetStateAction<iPlayer[]>>
 }
 
-const FormAddPlayers = ({ setPlayers, players }: iFormAddPlayer) => {
+const FormAddPlayers = ({
+  setPlayers,
+  players,
+  setMemorian,
+}: iFormAddPlayer) => {
   const [selectedColor, setSelectedColor] = useState('bg-black')
   const [nome, setNome] = useState('')
 
@@ -39,7 +44,7 @@ const FormAddPlayers = ({ setPlayers, players }: iFormAddPlayer) => {
       fada: 0,
       total: 0,
     }
-
+    setMemorian(players)
     setPlayers([...players, objPlayer])
     setNome('')
   }

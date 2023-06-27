@@ -6,6 +6,8 @@ interface iTableRow {
   setPlayers: React.Dispatch<React.SetStateAction<iPlayer[]>>
   player: iPlayer
   valor: string
+  negativo: boolean
+  setMemorian: React.Dispatch<React.SetStateAction<iPlayer[]>>
 }
 
 interface iProps {
@@ -13,7 +15,14 @@ interface iProps {
   name: string
 }
 
-const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
+const TableRow = ({
+  player,
+  valor,
+  players,
+  setPlayers,
+  negativo,
+  setMemorian,
+}: iTableRow) => {
   const handleClick = ({ id, name }: iProps) => {
     if (valor === '') {
       return
@@ -21,6 +30,12 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
 
     const playersListUpdated = players.map((player) => {
       if (player.nome === name) {
+        // let novoValor = parseInt(valor)
+        // if (negativo) {
+        //   novoValor = player[id] + parseInt(valor)
+        // } else {
+        //   novoValor = player[id] - parseInt(valor)
+        // }
         const novoValor = player[id] + parseInt(valor)
         return {
           ...player,
@@ -30,6 +45,7 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
       return player
     })
 
+    setMemorian(players)
     setPlayers(somarTotal(playersListUpdated).sort((a, b) => b.total - a.total))
   }
   const somarTotal = (list: iPlayer[]) => {
@@ -48,8 +64,8 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
   }
   return (
     <tr className={`text-white ${player.cor}`}>
-      <td className="border border-slate-600 p-3 text-center">{player.nome}</td>
-      <td className="border border-slate-600 p-3 text-center">
+      <td className="border border-slate-600 p-1 text-center">{player.nome}</td>
+      <td className="border border-slate-600 p-1 text-center">
         <button
           id="rua"
           onClick={() => handleClick({ id: 'rua', name: player.nome })}
@@ -58,7 +74,7 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
         </button>
       </td>
 
-      <td className="border border-slate-600 p-3 text-center">
+      <td className="border border-slate-600 p-1 text-center">
         <button
           id="cidade"
           onClick={() => handleClick({ id: 'cidade', name: player.nome })}
@@ -66,7 +82,7 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
           {player.cidade}
         </button>
       </td>
-      <td className="border border-slate-600 p-3 text-center">
+      <td className="border border-slate-600 p-1 text-center">
         <button
           id="igreja"
           onClick={() => handleClick({ id: 'igreja', name: player.nome })}
@@ -74,7 +90,7 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
           {player.igreja}
         </button>
       </td>
-      <td className="border border-slate-600 p-3 text-center">
+      <td className="border border-slate-600 p-1 text-center">
         <button
           id="fazenda"
           onClick={() => handleClick({ id: 'fazenda', name: player.nome })}
@@ -82,7 +98,7 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
           {player.fazenda}
         </button>
       </td>
-      <td className="border border-slate-600 p-3 text-center">
+      <td className="border border-slate-600 p-1 text-center">
         <button
           id="fada"
           onClick={() => handleClick({ id: 'fada', name: player.nome })}
@@ -90,7 +106,7 @@ const TableRow = ({ player, valor, players, setPlayers }: iTableRow) => {
           {player.fada}
         </button>
       </td>
-      <td className="border border-slate-600 p-3 text-center">
+      <td className="border border-slate-600 p-1 text-center">
         {player.total}
       </td>
     </tr>
