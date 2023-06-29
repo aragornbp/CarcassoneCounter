@@ -1,5 +1,5 @@
+import { iPlayer } from '@/app/page'
 import React from 'react'
-import { iPlayer } from '../FormAddPlayers/FormAddPlayers'
 
 interface iTableRow {
   players: iPlayer[]
@@ -12,7 +12,7 @@ interface iTableRow {
 
 interface iProps {
   id: string
-  name: string
+  color: string
 }
 
 const TableRow = ({
@@ -23,19 +23,13 @@ const TableRow = ({
   negativo,
   setMemorian,
 }: iTableRow) => {
-  const handleClick = ({ id, name }: iProps) => {
+  const handleClick = ({ id, color }: iProps) => {
     if (valor === '') {
       return
     }
 
     const playersListUpdated = players.map((player) => {
-      if (player.nome === name) {
-        // let novoValor = parseInt(valor)
-        // if (negativo) {
-        //   novoValor = player[id] + parseInt(valor)
-        // } else {
-        //   novoValor = player[id] - parseInt(valor)
-        // }
+      if (player.cor === color) {
         const novoValor = player[id] + parseInt(valor)
         return {
           ...player,
@@ -68,7 +62,7 @@ const TableRow = ({
       <td className="border border-slate-600 p-1 text-center">
         <button
           id="rua"
-          onClick={() => handleClick({ id: 'rua', name: player.nome })}
+          onClick={() => handleClick({ id: 'rua', color: player.cor })}
         >
           {player.rua}
         </button>
@@ -77,7 +71,7 @@ const TableRow = ({
       <td className="border border-slate-600 p-1 text-center">
         <button
           id="cidade"
-          onClick={() => handleClick({ id: 'cidade', name: player.nome })}
+          onClick={() => handleClick({ id: 'cidade', color: player.cor })}
         >
           {player.cidade}
         </button>
@@ -85,7 +79,7 @@ const TableRow = ({
       <td className="border border-slate-600 p-1 text-center">
         <button
           id="igreja"
-          onClick={() => handleClick({ id: 'igreja', name: player.nome })}
+          onClick={() => handleClick({ id: 'igreja', color: player.cor })}
         >
           {player.igreja}
         </button>
@@ -93,7 +87,7 @@ const TableRow = ({
       <td className="border border-slate-600 p-1 text-center">
         <button
           id="fazenda"
-          onClick={() => handleClick({ id: 'fazenda', name: player.nome })}
+          onClick={() => handleClick({ id: 'fazenda', color: player.cor })}
         >
           {player.fazenda}
         </button>
@@ -101,7 +95,7 @@ const TableRow = ({
       <td className="border border-slate-600 p-1 text-center">
         <button
           id="fada"
-          onClick={() => handleClick({ id: 'fada', name: player.nome })}
+          onClick={() => handleClick({ id: 'fada', color: player.cor })}
         >
           {player.fada}
         </button>

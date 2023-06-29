@@ -1,10 +1,11 @@
 'use client'
 import React from 'react'
-import { iPlayer } from '../FormAddPlayers/FormAddPlayers'
+
 import TableRow from '../TableRow/TableRow'
 import { Church } from 'lucide-react'
 import { GiFairy, GiFarmer, GiMountainRoad } from 'react-icons/gi'
 import { MdOutlineCastle } from 'react-icons/md'
+import { iPlayer } from '@/app/page'
 
 interface iTableBase {
   players: iPlayer[]

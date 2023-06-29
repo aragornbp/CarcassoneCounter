@@ -1,13 +1,25 @@
 'use client'
 import './globals.css'
 import React, { useEffect, useState } from 'react'
-import FormAddPlayers, {
-  iPlayer,
-} from '@/components/FormAddPlayers/FormAddPlayers'
+// import FormAddPlayers, {
+//   iPlayer,
+// } from '@/components/FormAddPlayers/FormAddPlayers'
 import Cookies from 'js-cookie'
 import Image from 'next/image'
 import TableBase from '@/components/TableBase/TableBase'
 import ButtonList from '@/components/ButtonList/ButtonList'
+import { GiMeeple } from 'react-icons/gi'
+
+export interface iPlayer {
+  cor: string
+  rua: number
+  cidade: number
+  igreja: number
+  fazenda: number
+  fada: number
+  total: number
+  [key: string]: any
+}
 
 export default function Home() {
   const [players, setPlayers] = useState<iPlayer[]>([])
@@ -26,6 +38,36 @@ export default function Home() {
     Cookies.set('carcassone_players', JSON.stringify(players))
   }, [players])
 
+  const handleChoosePlayer = (cor: string) => {
+    const playerExist = players.find((player) => player.cor === cor)
+    if (playerExist) {
+      const removePlayer = players.filter((player) => player.cor !== cor)
+      setPlayers(removePlayer)
+    } else {
+      const objPlayer: iPlayer = {
+        cor,
+        rua: 0,
+        cidade: 0,
+        igreja: 0,
+        fazenda: 0,
+        fada: 0,
+        total: 0,
+      }
+      setMemorian(players)
+      setPlayers([...players, objPlayer])
+    }
+  }
+
+  const getButtonStyle = (color: string) => {
+    return {
+      color: isPlayerSelected(color) ? color : 'gray',
+    }
+  }
+
+  const isPlayerSelected = (color: string) => {
+    return players.some((player) => player.cor === color)
+  }
+
   return (
     <div className="relative h-screen text-slate-200">
       <Image
@@ -39,12 +81,47 @@ export default function Home() {
         <h1 className="text-center text-2xl font-bold text-black md:text-4xl">
           Carcassone Counter
         </h1>
-        <div className="flex flex-col gap-5 lg:m-auto lg:flex-row-reverse lg:justify-between">
-          <FormAddPlayers
-            setPlayers={setPlayers}
-            players={players}
-            setMemorian={setMemorian}
-          />
+
+        <div className="flex flex-col gap-5">
+          <div className="flex w-full flex-col items-center justify-center">
+            <h2 className="text-2xl text-black">Selecione os jogadores</h2>
+            <div className="flex gap-4">
+              <button onClick={() => handleChoosePlayer('black')}>
+                <GiMeeple style={getButtonStyle('black')} size={40} />
+              </button>
+              <button onClick={() => handleChoosePlayer('red')}>
+                <GiMeeple style={getButtonStyle('red')} color="red" size={40} />
+              </button>
+              <button onClick={() => handleChoosePlayer('blue')}>
+                <GiMeeple
+                  style={getButtonStyle('blue')}
+                  color="blue"
+                  size={40}
+                />
+              </button>
+              <button onClick={() => handleChoosePlayer('#FF0084')}>
+                <GiMeeple
+                  style={getButtonStyle('#FF0084')}
+                  color="#FF0084"
+                  size={40}
+                />
+              </button>
+              <button onClick={() => handleChoosePlayer('green')}>
+                <GiMeeple
+                  style={getButtonStyle('green')}
+                  color="green"
+                  size={40}
+                />
+              </button>
+              <button onClick={() => handleChoosePlayer('yellow')}>
+                <GiMeeple
+                  style={getButtonStyle('yellow')}
+                  color="yellow"
+                  size={40}
+                />
+              </button>
+            </div>
+          </div>
 
           <div className="flex flex-col gap-4">
             <ButtonList
@@ -59,8 +136,8 @@ export default function Home() {
 
             <TableBase
               valor={valor}
-              setPlayers={setPlayers}
               players={players}
+              setPlayers={setPlayers}
               negativo={negativo}
               setMemorian={setMemorian}
             />

@@ -1,7 +1,9 @@
 import React from 'react'
-import { iPlayer } from '../FormAddPlayers/FormAddPlayers'
+
 import Cookies from 'js-cookie'
 import { Eraser, Trash2, UndoDot } from 'lucide-react'
+import Button from '../Button/Button'
+import { iPlayer } from '@/app/page'
 
 interface iButtonList {
   players: iPlayer[]
@@ -53,109 +55,52 @@ const ButtonList = ({
   const handleMemoria = () => {
     setPlayers(memorian)
   }
+
+  const handleGetValue = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (event.target instanceof HTMLButtonElement) {
+      console.log(event.target.innerText)
+      handleValor(event.target.innerText)
+    }
+  }
   return (
-    <div className="m-auto flex w-full flex-wrap justify-between gap-6 sm:flex-nowrap sm:gap-1 lg:m-0 lg:w-[10%] lg:flex-col lg:items-center">
-      <div className="flex w-24 items-center justify-center">
-        <button
-          id="btn1"
-          className={`h-full w-full rounded border ${
-            negativo ? 'bg-red-500' : 'bg-green-600'
-          } p-2  `}
-          onClick={handleNegativo}
-        >
-          {negativo ? '-' : '+'}
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          id="btn1"
-          className="h-full w-full rounded border bg-slate-600 p-2 "
-          onClick={(event) => {
-            if (event.target instanceof HTMLButtonElement) {
-              handleValor(event.target.innerText)
-            }
-          }}
-        >
-          {negativo ? -1 : +1}
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          id="btn1"
-          className="h-full w-full rounded border bg-slate-600 p-2 "
-          onClick={(event) => {
-            if (event.target instanceof HTMLButtonElement) {
-              handleValor(event.target.innerText)
-            }
-          }}
-        >
-          {negativo ? -2 : +2}
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          id="btn1"
-          className="h-full w-full rounded border bg-slate-600 p-2 "
-          onClick={(event) => {
-            if (event.target instanceof HTMLButtonElement) {
-              handleValor(event.target.innerText)
-            }
-          }}
-        >
-          {negativo ? -3 : +3}
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          id="btn1"
-          className="h-full w-full rounded border bg-slate-600 p-2 "
-          onClick={(event) => {
-            if (event.target instanceof HTMLButtonElement) {
-              handleValor(event.target.innerText)
-            }
-          }}
-        >
-          {negativo ? -5 : +5}
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          id="btn1"
-          className="h-full w-full rounded border bg-slate-600 p-2 "
-          onClick={(event) => {
-            if (event.target instanceof HTMLButtonElement) {
-              handleValor(event.target.innerText)
-            }
-          }}
-        >
-          {negativo ? -10 : +10}
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          id="btn1"
-          className="flex h-full w-full justify-center rounded border bg-slate-600 p-2"
-          onClick={handleMemoria}
-        >
-          <UndoDot />
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          className="flex h-full w-full justify-center rounded border bg-slate-600 p-2 "
-          onClick={removeCookies}
-        >
-          <Trash2 />
-        </button>
-      </div>
-      <div className="flex w-24 items-center justify-center">
-        <button
-          className="flex h-full w-full justify-center rounded border bg-slate-600 p-2 "
-          onClick={cleanTable}
-        >
-          <Eraser />
-        </button>
-      </div>
+    <div className="flex h-fit w-full justify-between gap-4 overflow-x-auto">
+      <Button func={handleNegativo} negativo={negativo}>
+        {negativo ? '-' : '+'}
+      </Button>
+      <Button func={handleGetValue} negativo={negativo}>
+        {negativo ? -1 : +1}
+      </Button>
+      <Button func={handleGetValue} negativo={negativo}>
+        {negativo ? -2 : +2}
+      </Button>
+      <Button func={handleGetValue} negativo={negativo}>
+        {negativo ? -3 : +3}
+      </Button>
+      <Button func={handleGetValue} negativo={negativo}>
+        {negativo ? -5 : +5}
+      </Button>
+      <Button func={handleGetValue} negativo={negativo}>
+        {negativo ? -10 : +10}
+      </Button>
+
+      <button
+        className="flex  h-12 w-12  justify-center rounded-full border bg-slate-600 p-3"
+        onClick={handleMemoria}
+      >
+        <UndoDot />
+      </button>
+      <button
+        className="flex h-12 w-12  justify-center rounded-full border bg-slate-600 p-3 "
+        onClick={removeCookies}
+      >
+        <Trash2 />
+      </button>
+      <button
+        className="flex h-12 w-12 justify-center rounded-full border bg-slate-600 p-3 "
+        onClick={cleanTable}
+      >
+        <Eraser />
+      </button>
     </div>
   )
 }
