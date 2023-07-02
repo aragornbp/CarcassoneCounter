@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Cookies from 'js-cookie'
 import { Eraser, Trash2, UndoDot } from 'lucide-react'
@@ -24,6 +24,8 @@ const ButtonList = ({
   setNegativo,
   memorian,
 }: iButtonList) => {
+  const [activeIndex, setActiveIndex] = useState(-1)
+
   const removeCookies = () => {
     Cookies.remove('carcassone_players', { path: '' })
     setPlayers([])
@@ -44,10 +46,6 @@ const ButtonList = ({
     setPlayers(newTable)
   }
 
-  const handleValor = (valorAgora: string) => {
-    setValor(valorAgora)
-  }
-
   const handleNegativo = () => {
     negativo ? setNegativo(false) : setNegativo(true)
   }
@@ -58,48 +56,65 @@ const ButtonList = ({
 
   const handleGetValue = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (event.target instanceof HTMLButtonElement) {
-      console.log(event.target.innerText)
       handleValor(event.target.innerText)
     }
   }
+
+  const handleValor = (valorAgora: string) => {
+    setValor(valorAgora)
+  }
+
+  const sortPlayers = () => {
+    const sortedPlayers = players.sort((a, b) => b.total - a.total)
+    setPlayers(sortedPlayers)
+    setValor('0')
+  }
   return (
-    <div className="flex h-fit w-full justify-between gap-4 overflow-x-auto">
-      <Button func={handleNegativo} negativo={negativo}>
+    <div className="flex h-fit w-full flex-wrap justify-around gap-2">
+      <button
+        className={`h-12 w-12 items-center justify-center  rounded-full border ${
+          negativo ? 'bg-red-500' : 'bg-green-600'
+        }`}
+        onClick={handleNegativo}
+      >
         {negativo ? '-' : '+'}
-      </Button>
-      <Button func={handleGetValue} negativo={negativo}>
-        {negativo ? -1 : +1}
-      </Button>
-      <Button func={handleGetValue} negativo={negativo}>
-        {negativo ? -2 : +2}
-      </Button>
-      <Button func={handleGetValue} negativo={negativo}>
-        {negativo ? -3 : +3}
-      </Button>
-      <Button func={handleGetValue} negativo={negativo}>
-        {negativo ? -5 : +5}
-      </Button>
-      <Button func={handleGetValue} negativo={negativo}>
-        {negativo ? -10 : +10}
-      </Button>
+      </button>
+      {[1, 2, 3, 5, 10].map((value, index) => (
+        <Button
+          key={index}
+          negativo={negativo}
+          func={handleGetValue}
+          setActiveIndex={setActiveIndex}
+          index={index}
+          activeIndex={activeIndex}
+        >
+          {negativo ? -value : value}
+        </Button>
+      ))}
 
       <button
-        className="flex  h-12 w-12  justify-center rounded-full border bg-slate-600 p-3"
+        className="flex  h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
+        onClick={sortPlayers}
+      >
+        Up
+      </button>
+      <button
+        className="flex  h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
         onClick={handleMemoria}
       >
         <UndoDot />
       </button>
       <button
-        className="flex h-12 w-12  justify-center rounded-full border bg-slate-600 p-3 "
-        onClick={removeCookies}
-      >
-        <Trash2 />
-      </button>
-      <button
-        className="flex h-12 w-12 justify-center rounded-full border bg-slate-600 p-3 "
+        className="flex h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
         onClick={cleanTable}
       >
         <Eraser />
+      </button>
+      <button
+        className="flex h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
+        onClick={removeCookies}
+      >
+        <Trash2 />
       </button>
     </div>
   )

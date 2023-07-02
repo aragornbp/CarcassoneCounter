@@ -40,8 +40,9 @@ const TableRow = ({
     })
 
     setMemorian(players)
-    setPlayers(somarTotal(playersListUpdated).sort((a, b) => b.total - a.total))
+    setPlayers(somarTotal(playersListUpdated))
   }
+
   const somarTotal = (list: iPlayer[]) => {
     return list.map((player: iPlayer) => {
       const newTotal =
@@ -56,53 +57,25 @@ const TableRow = ({
       }
     })
   }
-  return (
-    <tr className={`text-white ${player.cor}`}>
-      <td className="border border-slate-600 p-1 text-center">{player.nome}</td>
-      <td className="border border-slate-600 p-1 text-center">
-        <button
-          id="rua"
-          onClick={() => handleClick({ id: 'rua', color: player.cor })}
-        >
-          {player.rua}
-        </button>
-      </td>
 
-      <td className="border border-slate-600 p-1 text-center">
-        <button
-          id="cidade"
-          onClick={() => handleClick({ id: 'cidade', color: player.cor })}
-        >
-          {player.cidade}
-        </button>
-      </td>
-      <td className="border border-slate-600 p-1 text-center">
-        <button
-          id="igreja"
-          onClick={() => handleClick({ id: 'igreja', color: player.cor })}
-        >
-          {player.igreja}
-        </button>
-      </td>
-      <td className="border border-slate-600 p-1 text-center">
-        <button
-          id="fazenda"
-          onClick={() => handleClick({ id: 'fazenda', color: player.cor })}
-        >
-          {player.fazenda}
-        </button>
-      </td>
-      <td className="border border-slate-600 p-1 text-center">
-        <button
-          id="fada"
-          onClick={() => handleClick({ id: 'fada', color: player.cor })}
-        >
-          {player.fada}
-        </button>
-      </td>
-      <td className="border border-slate-600 p-1 text-center">
-        {player.total}
-      </td>
+  return (
+    <tr
+      className={` text-white bg-${
+        player.cor === 'black'
+          ? 'black'
+          : player.cor === '#FF0084'
+          ? 'pink-600'
+          : `${player.cor}-600`
+      }`}
+    >
+      {/* <td className="border border-slate-600 p-1 text-center">{player.nome}</td> */}
+      {['rua', 'cidade', 'igreja', 'fazenda', 'fada', 'total'].map((item) => (
+        <td key={item} className="border border-slate-600 p-1 text-center">
+          <button onClick={() => handleClick({ id: item, color: player.cor })}>
+            {player[item]}
+          </button>
+        </td>
+      ))}
     </tr>
   )
 }

@@ -82,44 +82,17 @@ export default function Home() {
           Carcassone Counter
         </h1>
 
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3">
           <div className="flex w-full flex-col items-center justify-center">
             <h2 className="text-2xl text-black">Selecione os jogadores</h2>
-            <div className="flex gap-4">
-              <button onClick={() => handleChoosePlayer('black')}>
-                <GiMeeple style={getButtonStyle('black')} size={40} />
-              </button>
-              <button onClick={() => handleChoosePlayer('red')}>
-                <GiMeeple style={getButtonStyle('red')} color="red" size={40} />
-              </button>
-              <button onClick={() => handleChoosePlayer('blue')}>
-                <GiMeeple
-                  style={getButtonStyle('blue')}
-                  color="blue"
-                  size={40}
-                />
-              </button>
-              <button onClick={() => handleChoosePlayer('#FF0084')}>
-                <GiMeeple
-                  style={getButtonStyle('#FF0084')}
-                  color="#FF0084"
-                  size={40}
-                />
-              </button>
-              <button onClick={() => handleChoosePlayer('green')}>
-                <GiMeeple
-                  style={getButtonStyle('green')}
-                  color="green"
-                  size={40}
-                />
-              </button>
-              <button onClick={() => handleChoosePlayer('yellow')}>
-                <GiMeeple
-                  style={getButtonStyle('yellow')}
-                  color="yellow"
-                  size={40}
-                />
-              </button>
+            <div className="flex gap-2">
+              {['black', 'red', 'blue', '#FF0084', 'green', 'yellow'].map(
+                (cor) => (
+                  <button key={cor} onClick={() => handleChoosePlayer(cor)}>
+                    <GiMeeple style={getButtonStyle(cor)} size={40} />
+                  </button>
+                ),
+              )}
             </div>
           </div>
 
