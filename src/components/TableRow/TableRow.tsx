@@ -57,14 +57,15 @@ const TableRow = ({
       }
     })
   }
-  const colors = [
-    'bg-black',
-    'bg-red-600',
-    'bg-blue-600',
-    'bg-pink-600',
-    'bg-green-600',
-    'bg-yellow-600',
-  ]
+  // cores comentadas, isto serve apenas para o tailwind entender que existem essas cores
+  // const colors = [
+  //   'bg-black',
+  //   'bg-red-600',
+  //   'bg-blue-600',
+  //   'bg-pink-600',
+  //   'bg-green-600',
+  //   'bg-yellow-600',
+  // ]
 
   return (
     <tr
