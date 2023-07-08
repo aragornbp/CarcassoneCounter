@@ -1,9 +1,6 @@
 'use client'
 import './globals.css'
 import React, { useEffect, useState } from 'react'
-// import FormAddPlayers, {
-//   iPlayer,
-// } from '@/components/FormAddPlayers/FormAddPlayers'
 import Cookies from 'js-cookie'
 import Image from 'next/image'
 import TableBase from '@/components/TableBase/TableBase'
@@ -20,6 +17,15 @@ export interface iPlayer {
   total: number
   [key: string]: any
 }
+
+const backgroundColors = [
+  'bg-gray-800',
+  'bg-red-500',
+  'bg-blue-500',
+  'bg-pink-500',
+  'bg-green-500',
+  'bg-yellow-500',
+]
 
 export default function Home() {
   const [players, setPlayers] = useState<iPlayer[]>([])
@@ -71,32 +77,38 @@ export default function Home() {
   return (
     <div className="relative h-screen text-slate-200">
       <Image
-        src="/assets/carcassone.jpg"
+        src="/assets/image.png"
         alt="background"
         width={1980}
         height={1024}
         style={{ objectFit: 'cover', height: '100%', position: 'fixed' }}
       />
       <main className="relative z-10 flex h-full w-full flex-col gap-2 p-5 md:m-auto">
-        <h1 className="text-center text-2xl font-bold text-black md:text-4xl">
+        <h1 className="mt-8 text-center text-4xl font-bold text-white md:text-5xl">
           Carcassone Counter
         </h1>
 
         <div className="flex flex-col gap-3">
-          <div className="flex w-full flex-col items-center justify-center">
-            <h2 className="text-2xl text-black">Selecione os jogadores</h2>
-            <div className="flex gap-2">
+          <div className="m-auto mt-10 flex h-[146px] w-full max-w-[543px] flex-col items-center rounded-xl border bg-slate-300 bg-opacity-50">
+            <h2 className="pt-4 text-[26px] font-bold text-white xl:text-3xl">
+              Available Players
+            </h2>
+            <div className="flex gap-1 pt-4 md:gap-3">
               {['black', 'red', 'blue', '#FF0084', 'green', 'yellow'].map(
-                (cor) => (
-                  <button key={cor} onClick={() => handleChoosePlayer(cor)}>
-                    <GiMeeple style={getButtonStyle(cor)} size={40} />
+                (cor, index) => (
+                  <button key={index} onClick={() => handleChoosePlayer(cor)}>
+                    <GiMeeple
+                      className={`flex h-12 w-12 items-center justify-center rounded-full opacity-50 ${backgroundColors[index]} p-2 md:h-16 md:w-16`}
+                      style={getButtonStyle(cor)}
+                      size={40}
+                    />
                   </button>
                 ),
               )}
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="mt-6 flex flex-col gap-4">
             <ButtonList
               players={players}
               setPlayers={setPlayers}

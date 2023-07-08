@@ -1,5 +1,6 @@
 import { iPlayer } from '@/app/page'
 import React from 'react'
+import { GiMeeple } from 'react-icons/gi'
 
 interface iTableRow {
   players: iPlayer[]
@@ -57,6 +58,9 @@ const TableRow = ({
       }
     })
   }
+  const meepleColor = (playerCor: string) => {
+    return { color: playerCor }
+  }
   // cores comentadas, isto serve apenas para o tailwind entender que existem essas cores
   // const colors = [
   //   'bg-black',
@@ -69,17 +73,17 @@ const TableRow = ({
 
   return (
     <tr
-      className={` text-white bg-${
-        player.cor === 'black'
-          ? 'black'
-          : player.cor === '#FF0084'
-          ? 'pink-600'
-          : `${player.cor}-600`
-      }`}
+      className="divide-y-2 divide-white text-2xl"
+      style={meepleColor(player.cor)}
     >
-      {/* <td className="border border-slate-600 p-1 text-center">{player.nome}</td> */}
+      <td className="flex justify-center text-center">
+        <GiMeeple
+          className={`flex h-12 w-12 items-center justify-center rounded-full p-2 opacity-50 md:h-16 md:w-16`}
+          size={40}
+        />
+      </td>
       {['rua', 'cidade', 'igreja', 'fazenda', 'fada', 'total'].map((item) => (
-        <td key={item} className="border border-slate-600 p-1 text-center">
+        <td key={item} className="text-center">
           <button onClick={() => handleClick({ id: item, color: player.cor })}>
             {player[item]}
           </button>

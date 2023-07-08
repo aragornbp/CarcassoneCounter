@@ -23,43 +23,41 @@ const TableBase = ({
   setMemorian,
 }: iTableBase) => {
   return (
-    <div className="h-[400px] w-full overflow-x-auto">
-      <table className="w-full divide-y divide-slate-600 bg-slate-700">
-        <thead className="whitespace-nowrap border-b border-slate-400">
-          {/* <td className="border border-slate-600 p-1 text-center">Nome</td> */}
-          <td className="w-[16%] border border-slate-600 p-1 text-center">
-            <div className="flex flex-col items-center justify-center gap-1">
+    <div className="h-max-[400px] m-auto mt-4 h-fit w-full max-w-[1120px] overflow-x-auto rounded-xl border text-xl text-black">
+      <table className="w-full  rounded-xl bg-slate-300 opacity-50">
+        <thead className="whitespace-nowrap">
+          <td className=" p-1 text-center">Players</td>
+          <td className="w-[16%]  p-1 text-center">
+            <div className="flex flex-col items-center justify-center">
               <GiMountainRoad size={24} />
               Rua
             </div>
           </td>
-          <td className="w-[16%] border border-slate-600 p-1 text-center">
-            <div className="flex flex-col items-center justify-center gap-1">
+          <td className="w-[16%]  p-1 text-center">
+            <div className="flex flex-col items-center justify-center">
               <MdOutlineCastle size={24} />
               Cidade
             </div>
           </td>
-          <td className="w-[16%] border border-slate-600 p-1 text-center">
-            <div className="flex flex-col items-center justify-center gap-1">
+          <td className="w-[16%]  p-1 text-center">
+            <div className="flex flex-col items-center justify-center">
               <Church strokeWidth={1.25} />
               igreja
             </div>
           </td>
-          <td className="w-[16%] border border-slate-600 p-1 text-center">
-            <div className="flex flex-col items-center justify-center gap-1">
+          <td className="w-[16%] p-1 text-center">
+            <div className="flex flex-col items-center justify-center">
               <GiFarmer size={24} />
               Fazenda
             </div>
           </td>
-          <td className="w-[16%] border border-slate-600 p-1 text-center">
-            <div className="flex flex-col items-center justify-center gap-1">
+          <td className="w-[16%] p-1 text-center">
+            <div className="flex flex-col items-center justify-center">
               <GiFairy size={24} />
               Fada
             </div>
           </td>
-          <td className="w-full border border-slate-600 p-1 text-center">
-            Total
-          </td>
+          <td className="w-full  p-1 text-center">Total</td>
         </thead>
         <tbody className="whitespace-nowrap">
           {players?.length > 0 ? (
