@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Cookies from 'js-cookie'
-import { Eraser, Trash2, UndoDot } from 'lucide-react'
+import { Eraser, Trash2, UndoDot, ArrowUpToLine } from 'lucide-react'
 import Button from '../Button/Button'
 import { iPlayer } from '@/app/page'
 
@@ -70,9 +70,9 @@ const ButtonList = ({
     setValor('0')
   }
   return (
-    <div className="flex h-fit w-full flex-wrap justify-around gap-2">
+    <div className="m-auto flex h-fit w-full max-w-[1120px] flex-wrap items-center justify-around gap-2 rounded-xl border bg-slate-300 bg-opacity-50 px-4 py-4 md:h-[72px] md:py-0">
       <button
-        className={`h-12 w-12 items-center justify-center  rounded-full border ${
+        className={`h-12 w-12 items-center justify-center rounded-full text-4xl  font-normal text-black opacity-40 ${
           negativo ? 'bg-red-500' : 'bg-green-600'
         }`}
         onClick={handleNegativo}
@@ -93,25 +93,25 @@ const ButtonList = ({
       ))}
 
       <button
-        className="flex  h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black  opacity-30"
         onClick={sortPlayers}
       >
-        Up
+        <ArrowUpToLine />
       </button>
       <button
-        className="flex  h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
+        className="flex  h-12 w-12 items-center justify-center rounded-full bg-white text-black  opacity-30"
         onClick={handleMemoria}
       >
         <UndoDot />
       </button>
       <button
-        className="flex h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black opacity-30"
         onClick={cleanTable}
       >
         <Eraser />
       </button>
       <button
-        className="flex h-12 w-12 items-center justify-center rounded-full border bg-slate-600"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black  opacity-30"
         onClick={removeCookies}
       >
         <Trash2 />
