@@ -24,9 +24,9 @@ const TableBase = ({
 }: iTableBase) => {
   return (
     <div className="h-max-[400px] m-auto mt-4 h-fit w-full max-w-[1120px] overflow-x-auto rounded-xl border text-xl text-black">
-      <table className="w-full  rounded-xl bg-slate-300 opacity-50">
+      <table className="w-full  rounded-xl bg-slate-400 opacity-90">
         <thead className="whitespace-nowrap">
-          <td className=" p-1 text-center">Players</td>
+          <td className=" p-1 text-center">Player</td>
           <td className="w-[16%]  p-1 text-center">
             <div className="flex flex-col items-center justify-center">
               <GiMountainRoad size={24} />

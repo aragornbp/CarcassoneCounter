@@ -78,12 +78,12 @@ const TableRow = ({
     >
       <td className="flex justify-center text-center">
         <GiMeeple
-          className={`flex h-12 w-12 items-center justify-center rounded-full p-2 opacity-50 md:h-16 md:w-16`}
+          className={`flex h-12 w-12 items-center justify-center rounded-full p-2 opacity-90 md:h-16 md:w-16`}
           size={40}
         />
       </td>
       {['rua', 'cidade', 'igreja', 'fazenda', 'fada', 'total'].map((item) => (
-        <td key={item} className="text-center">
+        <td key={item} className="text-center font-bold opacity-100">
           <button onClick={() => handleClick({ id: item, color: player.cor })}>
             {player[item]}
           </button>

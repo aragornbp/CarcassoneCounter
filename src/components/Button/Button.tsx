@@ -23,9 +23,9 @@ const Button = ({
   }
   return (
     <button
-      className={`text flex h-12 w-12  items-center justify-center  rounded-full text-xl text-black opacity-40 ${
+      className={`text flex h-12 w-12  items-center justify-center  rounded-full text-xl text-black opacity-70 ${
         negativo ? 'bg-red-500' : 'bg-green-600'
-      } ${activeIndex === index ? 'opacity-80' : ''}`}
+      } ${activeIndex === index ? 'opacity-100' : ''}`}
       onClick={(event) => handleClick(event)}
     >
       {children}
