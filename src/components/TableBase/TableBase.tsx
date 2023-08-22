@@ -24,7 +24,7 @@ const TableBase = ({
 }: iTableBase) => {
   return (
     <>
-      <div className="m-auto mt-40 h-fit w-full max-w-[1120px] rotate-90 rounded-xl border text-xl text-black md:rotate-0 md:overflow-x-auto">
+      <div className="m-auto mt-40 h-full w-full max-w-[1120px] rotate-90 rounded-xl border text-xl text-black md:h-fit md:rotate-0 md:overflow-x-auto">
         <table className="w-full  rounded-xl bg-slate-400 opacity-90">
           <thead className="whitespace-nowrap">
             <td className=" p-1 text-center">Player</td>
