@@ -127,13 +127,13 @@ export default function Home() {
           style={{ objectFit: 'cover', height: '100%', position: 'fixed' }}
         />
         <main className="relative z-10 flex h-full w-full flex-col gap-2 p-2 md:m-auto">
-          <h1 className="mt-8 text-center text-4xl font-bold text-black md:text-5xl">
+          <h1 className="mt-8 text-center text-4xl font-bold text-yellow-500 md:text-5xl">
             Carcassone Counter
           </h1>
 
           <div className="flex flex-col gap-3">
-            <div className="m-auto mt-10 flex h-[146px] w-full max-w-[543px] flex-col items-center rounded-xl border bg-slate-400 bg-opacity-70 py-5">
-              <h2 className="pt-4 text-[26px] font-bold text-black xl:text-3xl">
+            <div className="m-auto mb-10 mt-10 flex h-[146px] w-full max-w-[543px] flex-col items-center justify-center rounded-xl border bg-slate-400 bg-opacity-70 py-2 py-5">
+              <h2 className="text-[26px] font-bold text-yellow-500 xl:text-3xl">
                 Available Players
               </h2>
               <div className="flex gap-1 pt-4 md:gap-3">
