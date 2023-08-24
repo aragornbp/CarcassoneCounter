@@ -151,7 +151,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col gap-4">
+            <div className="flex h-[320px] w-full rotate-90 justify-start">
               <ButtonList
                 players={players}
                 setPlayers={setPlayers}
