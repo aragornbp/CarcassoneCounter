@@ -126,13 +126,13 @@ export default function Home() {
           height={1024}
           style={{ objectFit: 'cover', height: '100%', position: 'fixed' }}
         />
-        <main className="relative z-10 flex h-full w-full flex-col gap-2 p-5 md:m-auto">
+        <main className="relative z-10 flex h-full w-full flex-col gap-2 p-2 md:m-auto">
           <h1 className="mt-8 text-center text-4xl font-bold text-black md:text-5xl">
             Carcassone Counter
           </h1>
 
           <div className="flex flex-col gap-3">
-            <div className="m-auto mt-10 flex h-[146px] w-full max-w-[543px] flex-col items-center rounded-xl border bg-slate-400 bg-opacity-70">
+            <div className="m-auto mt-10 flex h-[146px] w-full max-w-[543px] flex-col items-center rounded-xl border bg-slate-400 bg-opacity-70 py-5">
               <h2 className="pt-4 text-[26px] font-bold text-black xl:text-3xl">
                 Available Players
               </h2>
@@ -151,7 +151,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex h-[320px] w-full rotate-90 justify-start">
+            <div className="flex h-full w-full rotate-90 items-center justify-start">
               <ButtonList
                 players={players}
                 setPlayers={setPlayers}

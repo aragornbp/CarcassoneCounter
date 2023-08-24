@@ -59,7 +59,7 @@ const ButtonList = ({
     setValor('0')
   }
   return (
-    <div className="flex h-full w-full flex-col flex-wrap gap-1 px-2 py-4 md:max-w-[1120px] md:py-0">
+    <div className="m-auto flex h-[320px] w-full flex-col flex-wrap items-center justify-center gap-1 px-2 py-4 md:max-w-[1120px] md:py-0">
       <button
         className={`h-12 w-12 items-center justify-center rounded-full text-4xl  font-normal text-black opacity-80 ${
           negativo ? 'bg-red-500' : 'bg-green-600'
